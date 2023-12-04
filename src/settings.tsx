@@ -9,6 +9,7 @@ export function getSettings() {
         showPlaylistStars: true,
         nowPlayingStarsPosition: "left",
         skipThreshold: "disabled",
+        alwaysShowStars: true
     };
     settings = {};
     try {

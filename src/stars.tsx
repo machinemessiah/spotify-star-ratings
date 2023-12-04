@@ -75,6 +75,7 @@ export function createStars(idSuffix, size) {
 }
 
 export function setRating(starElements, rating) {
+    starElements?.[0]?.[0]?.parentElement?.setAttribute('data-rating', parseFloat(rating).toFixed(1));
     const halfStars = (rating /= 0.5);
     for (let i = 0; i < 5; i++) {
         const stopFirst = starElements[i][1];

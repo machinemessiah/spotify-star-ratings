@@ -319,14 +319,15 @@ function updateTracklist() {
             );
 
             // Add listeners for hovering over a track in the tracklist
-            stars.style.visibility = typeof ratings[trackUri] !== "undefined" ? "visible" : "hidden";
+            stars.style.visibility = ((settings.alwaysShowStars || typeof ratings[trackUri] !== "undefined")) ? "visible" : "hidden";
+
 
             track.addEventListener("mouseover", () => {
-                stars.style.visibility = "visible";
+                if (!settings.alwaysShowStars) stars.style.visibility = "visible";
             });
 
             track.addEventListener("mouseout", () => {
-                stars.style.visibility = typeof ratings[trackUri] !== "undefined" ? "visible" : "hidden";
+                if (!settings.alwaysShowStars) stars.style.visibility = typeof ratings[trackUri] !== "undefined" ? "visible" : "hidden";
             });
         }
     }
