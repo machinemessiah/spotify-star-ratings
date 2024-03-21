@@ -1,0 +1,10 @@
+{
+	"files": {
+		"include": [
+			"jsHelper/**/*.js"
+		],
+		"ignore": [
+			//"scripts/**/*.js"
+		]
+	}
+}

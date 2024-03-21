@@ -3,11 +3,11 @@ import * as api from "./api";
 export function getSettings() {
     const defaultSettings = {
         halfStarRatings: true,
-        likeThreshold: "4.0",
-        hideHearts: false,
+        likeThreshold: "disabled",
+        hideHearts: true,
         enableKeyboardShortcuts: true,
         showPlaylistStars: true,
-        nowPlayingStarsPosition: "left",
+        nowPlayingStarsPosition: "right",
         skipThreshold: "disabled",
         alwaysShowStars: true
     };

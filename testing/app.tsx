@@ -78,10 +78,10 @@ const getNowPlayingTrackUri = () => {
     return Spicetify.Player.data.item.uri;
 };
 
-async function updateAlbumRating() {
+function updateAlbumRating() {
     if (!albumId) return;
-    if (!album) album = await api.getAlbum(`spotify:album:${albumId}`);
     const averageRating = getAlbumRating(ratings, album);
+
     setRating(albumStarData[1], averageRating.toString());
 }
 

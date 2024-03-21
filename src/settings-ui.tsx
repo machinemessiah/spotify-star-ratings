@@ -1,6 +1,7 @@
 import { saveSettings } from "./settings";
 import "./settings-ui.css";
 
+///if (!React) var React = Spicetify.React;
 
 function CheckboxIcon() {
     const React = Spicetify.React;
@@ -8,7 +9,7 @@ function CheckboxIcon() {
         <svg
             width={16}
             height={16}
-            viewbox="0 0 16 16"
+            viewBox="0 0 16 16"
             fill="currentColor"
             dangerouslySetInnerHTML={{
                 __html: Spicetify.SVGIcons.check,

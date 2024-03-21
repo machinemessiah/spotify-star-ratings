@@ -91,7 +91,7 @@ export async function deleteLowestRatings(playlistUris, ratings) {
 }
 
 export function getAlbumRating(ratings, album) {
-    const items = album.albumUnion.tracks.items;
+    const items = (album && album?.albumUnion) ? album.albumUnion.tracks?.items : [];
     let sumRatings = 0.0;
     let numRatings = 0;
     for (const item of items) {
@@ -103,8 +103,8 @@ export function getAlbumRating(ratings, album) {
     let averageRating = 0.0;
     if (numRatings > 0) averageRating = sumRatings / numRatings;
     // Round to nearest 0.5
-    averageRating = (Math.round(averageRating * 2) / 2).toFixed(1);
-    return averageRating;
+    averageRating = (Math.round(averageRating * 2) / 2);
+    return averageRating.toFixed(1);
 }
 
 export async function sortPlaylistByRating(playlistUri, ratings) {

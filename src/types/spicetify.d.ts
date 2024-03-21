@@ -85,16 +85,18 @@ declare namespace Spicetify {
         function addEventListener(type: "songchange", callback: (event?: Event & { data: PlayerState }) => void): void;
         function addEventListener(type: "onplaypause", callback: (event?: Event & { data: PlayerState }) => void): void;
         function addEventListener(type: "onprogress", callback: (event?: Event & { data: number }) => void): void;
-        function addEventListener(type: "appchange", callback: (event?: Event & { data: {
-            /**
-             * App href path
-             */
-            path: string;
-            /**
-             * App container
-             */
-             container: HTMLElement;
-        } }) => void): void;
+        function addEventListener(type: "appchange", callback: (event?: Event & {
+            data: {
+                /**
+                 * App href path
+                 */
+                path: string;
+                /**
+                 * App container
+                 */
+                container: HTMLElement;
+            }
+        }) => void): void;
         /**
          * Skip to previous track.
          */
@@ -366,7 +368,12 @@ declare namespace Spicetify {
          * Create a single toggle.
          */
         class Item {
-            constructor(name: string, isEnabled: boolean, onClick: (self: Item) => void);
+            constructor(
+                name: string,
+                isEnabled: boolean,
+                onClick: (self: Item) => void,
+                icon?: string,
+            );
             name: string;
             isEnabled: boolean;
             /**
@@ -378,6 +385,10 @@ declare namespace Spicetify {
              * Visually, item would has a tick next to it if its state is enabled.
              */
             setState(isEnabled: boolean): void;
+            /**
+             * Change icon
+             */
+            setIcon(icon: string): void;
             /**
              * Item is only available in Profile menu when method "register" is called.
              */
@@ -426,7 +437,7 @@ declare namespace Spicetify {
      * Spicetify.Keyboard is wrapper of this library to be compatible with legacy Spotify,
      * so new extension should use this library instead.
      */
-     function Mousetrap(element?: any): void;
+    function Mousetrap(element?: any): void;
 
     /**
      * Contains vast array of internal APIs.
@@ -1091,14 +1102,14 @@ declare namespace Spicetify {
          * @param id The token needed to join a social session.
          * @return The socialsession URI.
          */
-         static socialSessionURI(id: string): URI;
+        static socialSessionURI(id: string): URI;
 
-         /**
-         * Creates a new 'interruption' type URI.
-         *
-         * @param id The id of the interruption.
-         * @return The ad URI.
-         */
+        /**
+        * Creates a new 'interruption' type URI.
+        *
+        * @param id The id of the interruption.
+        * @return The ad URI.
+        */
         static interruptionURI(id: string): URI;
 
         static isAlbum(uri: any): boolean;
@@ -1253,10 +1264,10 @@ declare namespace Spicetify {
              * The menu UI to render inside of the context menu.
              */
             menu: typeof Spicetify.ReactComponent.Menu |
-                typeof Spicetify.ReactComponent.AlbumMenu |
-                typeof Spicetify.ReactComponent.PodcastShowMenu |
-                typeof Spicetify.ReactComponent.ArtistMenu |
-                typeof Spicetify.ReactComponent.PlaylistMenu;
+            typeof Spicetify.ReactComponent.AlbumMenu |
+            typeof Spicetify.ReactComponent.PodcastShowMenu |
+            typeof Spicetify.ReactComponent.ArtistMenu |
+            typeof Spicetify.ReactComponent.PlaylistMenu;
             /**
              * A child of the context menu. Should be `<button>`, `<a>`,
              * a custom react component that forwards a ref to a `<button>` or `<a>`,
